@@ -2,8 +2,8 @@
 
 WiFiClient client;
 
-String MakerIFTTT_Key = "oliOFJrUoUhkVZmskWSy9h37_DIMFuHiTEjx8z5C8ft";
-String MakerIFTTT_Event = "earthquake_detector";
+String MakerIFTTT_Key = "paste_your_IFTTT_key";
+String MakerIFTTT_Event = "enter_your_event_name";
 
 void setup() {
   Serial.begin(9600);
@@ -11,7 +11,7 @@ void setup() {
   delay(3000);
   Serial.println("START");
 
-  WiFi.begin("AndroidAP","gdoc3579");
+  WiFi.begin("enter_your_wifi_name","enter_your_wifi_password");
 
   while (!(WiFi.status() == WL_CONNECTED)){
     delay(300);
@@ -24,7 +24,7 @@ void setup() {
 
   // POST request to IFTTT webhook
   if (client.connect("maker.ifttt.com",80)) {
-    String json = "{\"value1\":\"Attention please! Earthquake is detected. Please take the safest position quickly.\",\"value2\":\"\",\"value3\":\"\"}";
+    String json = "{\"value1\":\"Enter_here_what_you_want_to_display\",\"value2\":\"\",\"value3\":\"\"}";
     String post_rqst = "POST /trigger/" + MakerIFTTT_Event + "/with/key/" + MakerIFTTT_Key + " HTTP/1.1\r\n" +
                        "Host: maker.ifttt.com\r\n" +
                        "Content-Type: application/json\r\n" +
